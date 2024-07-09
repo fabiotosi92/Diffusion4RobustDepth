@@ -111,7 +111,7 @@ This figure illustrates our process of transforming easy scenes into challenging
 
 #### Performance on Challenging Datasets
 
-Our method significantly improves the performance of state-of-the-art monocular depth estimation networks. We show the ability of our approach to boost the capabilities of existing networks, such as Depth Anything in the following picture, across various challenging datasets:
+Our method significantly improves the performance of state-of-the-art monocular depth estimation networks. We show the ability of our approach to boost the capabilities of existing networks, such as Depth Anything in the following picture, across various challenging real-world datasets:
 
 <p align="center">
   <img src="./assets/img/figure1.png" alt="Qualitative Results on Challenging Datasets" width="800"/>
@@ -168,7 +168,7 @@ We are currently preparing our trained models for release. Please check back soo
 
 ## 🔍 Potential for Enhancing State-of-the-Art Models
 
-> **Note**: Our work was submitted before the release of Depth Anything v2, which was published during the ECCV 2024 decision period.
+> **Note**: Our work was submitted before the release of Depth Anything v2, which appeared on arXiv during the ECCV 2024 decision period.
 
 Our framework shows potential for enhancing even state-of-the-art models like Depth Anything v2, which already performs impressively in challenging scenarios. The following example demonstrates how our method can improve depth estimation in specific cases:
 
