@@ -1,1 +1,209 @@
-# depth4challenges
+<h1 align="center"> Diffusion Models for Monocular Depth Estimation: Overcoming Challenging Conditions (ECCV 2024) </h1>
+
+<br>
+
+:rotating_light: This repository contains information about our work "**Diffusion Models for Monocular Depth Estimation: Overcoming Challenging Conditions**", [ECCV 2024](https://eccv2024.ecva.net/)
+ 
+by [Fabio Tosi](https://fabiotosi92.github.io/), [Pierluigi Zama Ramirez](https://pierlui92.github.io/), and [Matteo Poggi](https://mattpoggi.github.io/)
+
+University of Bologna
+
+<div class="alert alert-info">
+
+<h2 align="center"> 
+
+[Project Page](https://nerfstereo.github.io/) | [Paper](https://openaccess.thecvf.com/content/CVPR2023/papers/Tosi_NeRF-Supervised_Deep_Stereo_CVPR_2023_paper.pdf) |  [Supplementary](https://github.com/fabiotosi92/NeRF-Supervised-Deep-Stereo/raw/main/assets/Tosi_et_al_CVPR2023_supplementary.pdf) | [Poster](https://github.com/fabiotosi92/NeRF-Supervised-Deep-Stereo/raw/main/assets/Tosi_et_al_CVPR2023_poster.pdf) | 📂 [Dataset](https://amsacta.unibo.it/id/eprint/7218/)
+</h2>
+
+**Note**: 🚧 Kindly note that this repository is currently in the development phase. We are actively working to add and refine features and documentation. We apologize for any inconvenience caused by incomplete or missing elements and appreciate your patience as we work towards completion.
+
+</div>
+
+## :bookmark_tabs: Table of Contents
+
+1. [Introduction](#clapper-introduction)
+2. [Method](#gear-method)
+3. [Dataset](#file_cabinet-dataset)
+4. [Qualitative Results](#art-qualitative-results)
+5. [Quantitative Results](#chart_with_upwards_trend-quantitative-results)
+6. [Models](#computer-models)
+7. [Potential for Enhancing State-of-the-Art Models](#-potential-for-enhancing-state-of-the-art-models)
+8. [Citation](#fountain_pen-citation)
+9. [Contacts](#envelope-contacts)
+10. [Acknowledgements](#pray-acknowledgements)
+
+
+
+
+## :clapper: Introduction
+
+We present a novel approach designed to address the complexities posed by challenging, out-of-distribution data in the single-image depth estimation task. Our method leverages cutting-edge conditioned diffusion models to generate new, user-defined scenes with a comprehensive set of challenges and associated depth information.
+
+**Key Contributions:**
+- A framework for generating challenging scenes while preserving 3D structure
+- A self-distillation protocol for fine-tuning monocular depth networks
+- State-of-the-art results on benchmarks for challenging conditions
+
+
+## :gear: Method
+
+Our innovative approach addresses the challenge of monocular depth estimation in complex, out-of-distribution scenarios by leveraging the power of diffusion models. Here's how our method works:
+
+1. **Scene Generation with Diffusion Models**: 
+   We start with images that are easy for depth estimation (e.g., clear daylight scenes). Using state-of-the-art conditioned diffusion models (e.g. ControlNet, T2I-Adapter), we transform these into challenging scenarios (like rainy nights or scenes with reflective surfaces). The key novelty here is that we preserve the underlying 3D structure while dramatically altering the visual appearance. This allows us to generate a vast array of challenging scenes with known depth information.
+
+2. **Depth Estimation on Simple Scenes**: 
+   We use a pre-trained monocular depth networks, such as DPT, ZoeDepth, Depth-Anything, to estimate depth for the original, unchallenging scenes. This provides us with reliable depth estimates for the base scenarios.
+
+3. **Self-Distillation Protocol**: 
+   We then fine-tune the depth network using a novel self-distillation protocol. This process involves:
+   - Using the generated challenging images as input
+   - Employing the depth estimates from the simple scenes as pseudo ground truth
+   - Applying a scale-and-shift-invariant loss to account for the global changes introduced by the diffusion process
+
+This approach allows the network to learn robust depth estimation across a wide range of challenging conditions, without requiring expensive real-world data collection or manual annotation.
+
+<p align="center">
+  <img src="assets/method.png" alt="Method Overview" width="800"/>
+</p>
+
+Key advantages of our method:
+- **Flexibility**: By using text prompts to guide the diffusion model, we can generate an almost unlimited variety of challenging scenarios.
+- **Scalability**: Once set up, our pipeline can generate large amounts of training data with minimal human intervention.
+- **Preservation of 3D Structure**: Unlike simple data augmentation techniques, our method maintains the underlying depth structure while altering visual appearance.
+- **Domain Generalization**: By exposing the network to a wide range of challenging conditions during training, we improve its ability to generalize to unseen challenging real-world scenarios.
+
+This method represents a significant step forward in training robust depth estimation models, enabling better performance in the challenging conditions often encountered in real-world applications.
+
+## :file_cabinet: Dataset
+
+Our approach generates datasets for various challenging conditions, showcasing the versatility in creating diverse, realistic scenarios for robust depth estimation:
+
+- Adverse weather (rain, snow, fog)
+- Low-light conditions
+- Non-Lambertian surfaces (transparent and reflective objects)
+- etc..
+
+#### Arbitrary Weather Conditions in Driving Scenes
+
+<p align="center">
+  <img src="./assets/img/figure2.png" alt="Arbitrary Weather Conditions" width="800"/>
+</p>
+
+This image demonstrates our ability to generate driving scenes with arbitrarily chosen challenging weather conditions. By leveraging diffusion models, we can create a wide range of adverse weather scenarios, allowing for comprehensive training and evaluation of depth estimation models in diverse environmental conditions.
+
+####  Transforming Opaque Materials into Transparent and Mirrored (ToM) Surfaces
+
+<p align="center">
+  <img src="./assets/img/figure3.png" alt="Easy to Challenging Transformation" width="800"/>
+</p>
+
+This figure illustrates our process of transforming easy scenes into challenging ones:
+- **Left**: Original "easy" images, typically clear and well-lit scenes.
+- **Center**: Depth maps estimated from the easy scenes, which serve as a guide for maintaining 3D structure.
+- **Right**: Generated "challenging" images, showcasing various difficult conditions while preserving the underlying depth structure.
+
+<p style="color: red;">
+  <span style="font-size: 1.2em;">🚧</span> <strong>The generated dataset will be made available soon, providing a valuable resource for training and evaluating depth estimation models under challenging conditions.</strong>
+</p>
+
+## :art: Qualitative Results
+
+#### Performance on Challenging Datasets
+
+Our method demonstrates significant improvements over existing approaches, particularly in enhancing the performance of state-of-the-art monocular depth estimation networks. We show the remarkable ability of our approach to boost the capabilities of existing networks, such as Depth Anything, across various challenging datasets:
+
+<p align="center">
+  <img src="./assets/img/figure1.png" alt="Qualitative Results on Challenging Datasets" width="800"/>
+</p>
+
+#### Performance on Real-World Web Images
+
+To further demonstrate the effectiveness of our approach, we tested the fine-tuned Depth Anything model on a diverse set of challenging images sourced from the web:
+
+<p align="center">
+  <img src="./assets/img/figure4.png" alt="Qualitative Results on Web Images" width="800"/>
+</p>
+
+
+- **Left**: Original RGB images from various real-world scenarios.
+- **Center**: Depth maps estimated by the original Depth Anything model.
+- **Right**: Depth maps produced by our fine-tuned Depth Anything model.
+
+
+
+## :chart_with_upwards_trend: Quantitative Results
+
+Our approach significantly improves performance across various scenarios and datasets:
+
+#### Performance on nuScenes Dataset
+
+<p align="center">
+<img src="./assets/img/table1.png" alt="Tab1" width="800"/>
+</p>
+
+
+#### Cross-Dataset Generalization
+
+<p align="center">
+<img src="./assets/img/table2.png" alt="Tab2" width="800"/>
+</p>
+
+- Trained using only "easy" condition images (KITTI, Mapillary, etc.)
+
+#### Performance on Transparent and Mirror (ToM) Objects
+
+<p align="center">
+<img src="./assets/img/table3.png" alt="Tab3" width="800"/>
+</p>
+
+
+
+## :computer: Models
+
+**COMING SOON**
+
+We are currently preparing our trained models for release. Please check back soon for updates.
+
+
+## 🔍 Potential for Enhancing State-of-the-Art Models
+
+> **Note**: Our work was submitted before the release of Depth Anything v2, which was published during the ECCV 2024 decision period.
+
+Our framework shows potential for enhancing even state-of-the-art models like Depth Anything v2, which already performs impressively in challenging scenarios. The following example demonstrates how our method can improve depth estimation in specific cases:
+
+<p align="center">
+<img src="./assets/img/figure5.png" alt="Booster Dataset Comparison" width="800"/>
+</p>
+
+
+
+## :fountain_pen: Citation
+
+If you find our work useful in your research, please consider citing:
+
+```bibtex
+@inproceedings{tosi2024diffusion,
+  title={Diffusion Models for Monocular Depth Estimation: Overcoming Challenging Conditions},
+  author={Tosi, Fabio and Zama Ramirez, Pierluigi and Poggi, Matteo},
+  booktitle={European Conference on Computer Vision (ECCV)},
+  year={2024}
+}
+```
+
+## :envelope: Contacts
+
+For questions, please send an email to fabio.tosi5@unibo.it, pierluigi.zama@unibo.it, or m.poggi@unibo.it
+
+## :pray: Acknowledgements
+
+We would like to extend our sincere appreciation to the authors of the following projects for making their code available, which we have utilized in our work:
+
+- [md4all](https://github.com/md4all/md4all)
+- [Stable Diffusion](https://github.com/CompVis/stable-diffusion)
+- [T2I-Adapter](https://github.com/TencentARC/T2I-Adapter)
+- [Depth Anything](https://github.com/LiheYoung/Depth-Anything)
+- [MiDaS](https://github.com/isl-org/MiDaS)
+- [ZoeDepth](https://github.com/isl-org/ZoeDepth)
+
+We also extend our gratitude to the creators of the datasets used in our experiments: nuScenes, RobotCar, DrivingStereo, and ClearGrasp.
