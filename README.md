@@ -12,7 +12,7 @@ University of Bologna
 
 <h2 align="center"> 
 
-[Project Page](https://nerfstereo.github.io/) | [Paper](https://openaccess.thecvf.com/content/CVPR2023/papers/Tosi_NeRF-Supervised_Deep_Stereo_CVPR_2023_paper.pdf) |  [Supplementary](https://github.com/fabiotosi92/NeRF-Supervised-Deep-Stereo/raw/main/assets/Tosi_et_al_CVPR2023_supplementary.pdf) | [Poster](https://github.com/fabiotosi92/NeRF-Supervised-Deep-Stereo/raw/main/assets/Tosi_et_al_CVPR2023_poster.pdf) | 📂 [Dataset](https://amsacta.unibo.it/id/eprint/7218/)
+[Project Page](https://depth4challenges.github.io/) | [Paper]() |  [Supplementary]() | [Poster]() | 📂 [Dataset]()
 </h2>
 
 **Note**: 🚧 Kindly note that this repository is currently in the development phase. We are actively working to add and refine features and documentation. We apologize for any inconvenience caused by incomplete or missing elements and appreciate your patience as we work towards completion.
@@ -111,7 +111,7 @@ This figure illustrates our process of transforming easy scenes into challenging
 
 #### Performance on Challenging Datasets
 
-Our method demonstrates significant improvements over existing approaches, particularly in enhancing the performance of state-of-the-art monocular depth estimation networks. We show the remarkable ability of our approach to boost the capabilities of existing networks, such as Depth Anything, across various challenging datasets:
+Our method significantly improves the performance of state-of-the-art monocular depth estimation networks. We show the ability of our approach to boost the capabilities of existing networks, such as Depth Anything in the following picture, across various challenging datasets:
 
 <p align="center">
   <img src="./assets/img/figure1.png" alt="Qualitative Results on Challenging Datasets" width="800"/>
@@ -119,7 +119,7 @@ Our method demonstrates significant improvements over existing approaches, parti
 
 #### Performance on Real-World Web Images
 
-To further demonstrate the effectiveness of our approach, we tested the fine-tuned Depth Anything model on a diverse set of challenging images sourced from the web:
+To further demonstrate the effectiveness of our approach, we tested the fine-tuned Depth Anything model using our generated dataset on a diverse set of challenging images sourced from the web:
 
 <p align="center">
   <img src="./assets/img/figure4.png" alt="Qualitative Results on Web Images" width="800"/>
@@ -134,7 +134,7 @@ To further demonstrate the effectiveness of our approach, we tested the fine-tun
 
 ## :chart_with_upwards_trend: Quantitative Results
 
-Our approach significantly improves performance across various scenarios and datasets:
+Our approach improves performance across various scenarios and datasets:
 
 #### Performance on nuScenes Dataset
 
