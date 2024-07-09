@@ -172,8 +172,16 @@ We are currently preparing our trained models for release. Please check back soo
 
 Our framework shows potential for enhancing even state-of-the-art models like Depth Anything v2, which already performs impressively in challenging scenarios. The following example demonstrates how our method can improve depth estimation in specific cases:
 
+##### Example 1
+
 <p align="center">
 <img src="./assets/img/figure5.png" alt="Booster Dataset Comparison" width="800"/>
+</p>
+
+##### Example 2
+
+<p align="center">
+<img src="./assets/img/figure6.png" alt="Booster Dataset Comparison" width="800"/>
 </p>
 
 
