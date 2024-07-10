@@ -40,28 +40,27 @@ University of Bologna
 We present a novel approach designed to address the complexities posed by challenging, out-of-distribution data in the single-image depth estimation task. Our method leverages cutting-edge conditioned diffusion models to generate new, user-defined scenes with a comprehensive set of challenges and associated depth information.
 
 **Key Contributions:**
-- A framework for generating challenging scenes while preserving 3D structure
-- A self-distillation protocol for fine-tuning monocular depth networks
-- State-of-the-art results on benchmarks for challenging conditions
-
+- Pioneering use of diffusion models to address single-image depth estimation challenges
+- A knowledge distillation approach that enhances the robustness of existing monocular depth estimation models in challenging out-of-distribution settings
+- The first unified framework that simultaneously tackles multiple challenges (e.g. adverse weather and non-Lambertian)
 
 ## :gear: Method
 
-Our innovative approach addresses the challenge of monocular depth estimation in complex, out-of-distribution scenarios by leveraging the power of diffusion models. Here's how our method works:
+Our approach addresses the challenge of monocular depth estimation in complex, out-of-distribution scenarios by leveraging the power of diffusion models. Here's how our method works:
 
 1. **Scene Generation with Diffusion Models**: 
-   We start with images that are easy for depth estimation (e.g., clear daylight scenes). Using state-of-the-art conditioned diffusion models (e.g. ControlNet, T2I-Adapter), we transform these into challenging scenarios (like rainy nights or scenes with reflective surfaces). The key novelty here is that we preserve the underlying 3D structure while dramatically altering the visual appearance. This allows us to generate a vast array of challenging scenes with known depth information.
+   We start with images that are easy for depth estimation (e.g., clear daylight scenes). Using state-of-the-art conditioned diffusion models (e.g. ControlNet, T2I-Adapter), we transform these into challenging scenarios (like rainy nights or scenes with reflective surfaces). The novelty here is that we preserve the underlying 3D structure while dramatically altering the visual appearance. This allows us to generate a vast array of challenging scenes with known depth information.
 
 2. **Depth Estimation on Simple Scenes**: 
    We use a pre-trained monocular depth networks, such as DPT, ZoeDepth, Depth-Anything, to estimate depth for the original, unchallenging scenes. This provides us with reliable depth estimates for the base scenarios.
 
 3. **Self-Distillation Protocol**: 
-   We then fine-tune the depth network using a novel self-distillation protocol. This process involves:
+   We then fine-tune the depth network using a self-distillation protocol. This process involves:
    - Using the generated challenging images as input
    - Employing the depth estimates from the simple scenes as pseudo ground truth
    - Applying a scale-and-shift-invariant loss to account for the global changes introduced by the diffusion process
 
-This approach allows the network to learn robust depth estimation across a wide range of challenging conditions, without requiring expensive real-world data collection or manual annotation.
+This approach allows the depth network to learn robust depth estimation across a wide range of challenging conditions.
 
 <p align="center">
   <img src="assets/method.png" alt="Method Overview" width="800"/>
@@ -70,17 +69,15 @@ This approach allows the network to learn robust depth estimation across a wide 
 Key advantages of our method:
 - **Flexibility**: By using text prompts to guide the diffusion model, we can generate an almost unlimited variety of challenging scenarios.
 - **Scalability**: Once set up, our pipeline can generate large amounts of training data with minimal human intervention.
-- **Preservation of 3D Structure**: Unlike simple data augmentation techniques, our method maintains the underlying depth structure while altering visual appearance.
 - **Domain Generalization**: By exposing the network to a wide range of challenging conditions during training, we improve its ability to generalize to unseen challenging real-world scenarios.
 
-This method represents a significant step forward in training robust depth estimation models, enabling better performance in the challenging conditions often encountered in real-world applications.
 
 ## :file_cabinet: Dataset
 
-Our approach generates datasets for various challenging conditions, showcasing the versatility in creating diverse, realistic scenarios for robust depth estimation:
+Our approach generates datasets for a variety of challenging conditions, demonstrating the versatility of creating diverse, realistic scenarios for robust depth estimation:
 
 - Adverse weather (rain, snow, fog)
-- Low-light conditions
+- Low-light conditions (night)
 - Non-Lambertian surfaces (transparent and reflective objects)
 - etc..
 
@@ -90,7 +87,7 @@ Our approach generates datasets for various challenging conditions, showcasing t
   <img src="./assets/img/figure2.png" alt="Arbitrary Weather Conditions" width="800"/>
 </p>
 
-This image demonstrates our ability to generate driving scenes with arbitrarily chosen challenging weather conditions. By leveraging diffusion models, we can create a wide range of adverse weather scenarios, allowing for comprehensive training and evaluation of depth estimation models in diverse environmental conditions.
+This image demonstrates our ability to generate driving scenes with arbitrarily chosen challenging weather conditions. 
 
 ####  Transforming Opaque Materials into Transparent and Mirrored (ToM) Surfaces
 
@@ -119,7 +116,7 @@ Our method significantly improves the performance of state-of-the-art monocular 
 
 #### Performance on Real-World Web Images
 
-To further demonstrate the effectiveness of our approach, we tested the fine-tuned Depth Anything model using our generated dataset on a diverse set of challenging images sourced from the web:
+To further demonstrate the effectiveness of our approach, we tested the fine-tuned Depth Anything model using our generated dataset on a diverse set of challenging images featuring ToM surfaces sourced from the web:
 
 <p align="center">
   <img src="./assets/img/figure4.png" alt="Qualitative Results on Web Images" width="800"/>
@@ -214,4 +211,4 @@ We would like to extend our sincere appreciation to the authors of the following
 - [MiDaS](https://github.com/isl-org/MiDaS)
 - [ZoeDepth](https://github.com/isl-org/ZoeDepth)
 
-We also extend our gratitude to the creators of the datasets used in our experiments: nuScenes, RobotCar, DrivingStereo, and ClearGrasp.
+We also extend our gratitude to the creators of the datasets used in our experiments: nuScenes, RobotCar, KITTI, Mapillary, DrivingStereo, Booster and ClearGrasp.
