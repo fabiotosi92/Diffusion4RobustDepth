@@ -12,7 +12,7 @@ University of Bologna
 
 <h2 align="center"> 
 
-[Project Page](https://depth4challenges.github.io/) | [Paper]() |  [Supplementary]() | [Poster]() | 📂 [Dataset]()
+[Project Page](https://diffusion4robustdepth.github.io/) | [Paper]() |  [Supplementary]() | [Poster]() | 📂 [Dataset]()
 </h2>
 
 **Note**: 🚧 Kindly note that this repository is currently in the development phase. We are actively working to add and refine features and documentation. We apologize for any inconvenience caused by incomplete or missing elements and appreciate your patience as we work towards completion.
@@ -37,10 +37,10 @@ University of Bologna
 
 ## :clapper: Introduction
 
-We present a novel approach designed to address the complexities posed by challenging, out-of-distribution data in the single-image depth estimation task. Our method leverages cutting-edge conditioned diffusion models to generate new, user-defined scenes with a comprehensive set of challenges and associated depth information.
+We present a novel approach designed to address the complexities posed by challenging, out-of-distribution data in the single-image depth estimation task. Our method leverages cutting-edge text-to-image diffusion models with depth-aware control to generate new, user-defined scenes with a comprehensive set of challenges and associated depth information.
 
 **Key Contributions:**
-- Pioneering use of diffusion models to address single-image depth estimation challenges
+- Pioneering use of text-to-image diffusion models with depth-aware control to address single-image depth estimation challenges
 - A knowledge distillation approach that enhances the robustness of existing monocular depth estimation models in challenging out-of-distribution settings
 - The first unified framework that simultaneously tackles multiple challenges (e.g. adverse weather and non-Lambertian)
 
@@ -49,10 +49,10 @@ We present a novel approach designed to address the complexities posed by challe
 Our approach addresses the challenge of monocular depth estimation in complex, out-of-distribution scenarios by leveraging the power of diffusion models. Here's how our method works:
 
 1. **Scene Generation with Diffusion Models**: 
-   We start with images that are easy for depth estimation (e.g., clear daylight scenes). Using state-of-the-art conditioned diffusion models (e.g. ControlNet, T2I-Adapter), we transform these into challenging scenarios (like rainy nights or scenes with reflective surfaces). The novelty here is that we preserve the underlying 3D structure while dramatically altering the visual appearance. This allows us to generate a vast array of challenging scenes with known depth information.
+   We start with images that are easy for depth estimation (e.g., clear daylight scenes). Using state-of-the-art text-to-image diffusion models (e.g. ControlNet, T2I-Adapter), we transform these into challenging scenarios (like rainy nights or scenes with reflective surfaces). The novelty here is that we preserve the underlying 3D structure while dramatically altering the visual appearance. This allows us to generate a vast array of challenging scenes with known depth information.
 
 2. **Depth Estimation on Simple Scenes**: 
-   We use a pre-trained monocular depth networks, such as DPT, ZoeDepth, Depth-Anything, to estimate depth for the original, unchallenging scenes. This provides us with reliable depth estimates for the base scenarios.
+   We use a pre-trained monocular depth network, such as DPT, ZoeDepth, Depth-Anything, to estimate depth for the original, unchallenging scenes. This provides us with reliable depth estimates for the base scenarios.
 
 3. **Self-Distillation Protocol**: 
    We then fine-tune the depth network using a self-distillation protocol. This process involves:
