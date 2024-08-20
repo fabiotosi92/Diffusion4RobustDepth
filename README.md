@@ -12,7 +12,7 @@ University of Bologna
 
 <h2 align="center"> 
 
-[Project Page](https://diffusion4robustdepth.github.io/) | [Paper]() |  [Supplementary]()
+[Project Page](https://diffusion4robustdepth.github.io/) | [Paper](https://github.com/fabiotosi92/Diffusion4RobustDepth/blob/main/assets/main.pdf) |  [Supplementary](https://github.com/fabiotosi92/Diffusion4RobustDepth/blob/main/assets/supplement.pdf)
 </h2>
 
 **Note**: 🚧 Kindly note that this repository is currently in the development phase. We are actively working to add and refine features and documentation. We apologize for any inconvenience caused by incomplete or missing elements and appreciate your patience as we work towards completion.
