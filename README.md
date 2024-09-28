@@ -12,12 +12,13 @@ University of Bologna
 
 <h2 align="center">
   <a href="https://diffusion4robustdepth.github.io/">Project Page</a> |
-  <a href="https://raw.githubusercontent.com/fabiotosi92/Diffusion4RobustDepth/main/assets/main.pdf">Paper</a> |
-  <a href="https://raw.githubusercontent.com/fabiotosi92/Diffusion4RobustDepth/main/assets/supplement.pdf">Supplementary</a> |
-  <a href="https://raw.githubusercontent.com/fabiotosi92/Diffusion4RobustDepth/main/assets/poster.pdf">Poster</a> |
   <a href="https://huggingface.co/datasets/fabiotosi92/Diffusion4RobustDepth">
     <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face" height="18" style="vertical-align: middle;"> Dataset & Models
-  </a>
+  </a> |
+  <a href="https://raw.githubusercontent.com/fabiotosi92/Diffusion4RobustDepth/main/assets/main.pdf">Paper</a>
+  <br>
+  <a href="https://raw.githubusercontent.com/fabiotosi92/Diffusion4RobustDepth/main/assets/supplement.pdf">Supplementary</a> |
+  <a href="https://raw.githubusercontent.com/fabiotosi92/Diffusion4RobustDepth/main/assets/poster.pdf">Poster</a>
 </h2>
 
 **Note**: 🚧 Kindly note that this repository is currently in the development phase. We are actively working to add and refine features and documentation. We apologize for any inconvenience caused by incomplete or missing elements and appreciate your patience as we work towards completion.
