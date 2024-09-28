@@ -10,9 +10,14 @@ University of Bologna
 
 <div class="alert alert-info">
 
-<h2 align="center"> 
-
-[Project Page](https://diffusion4robustdepth.github.io/) | [Paper](https://raw.githubusercontent.com/fabiotosi92/Diffusion4RobustDepth/main/assets/main.pdf) |  [Supplementary](https://raw.githubusercontent.com/fabiotosi92/Diffusion4RobustDepth/main/assets/supplement.pdf) |  [Poster](https://raw.githubusercontent.com/fabiotosi92/Diffusion4RobustDepth/main/assets/poster.pdf)
+<h2 align="center">
+  <a href="https://diffusion4robustdepth.github.io/">Project Page</a> |
+  <a href="https://raw.githubusercontent.com/fabiotosi92/Diffusion4RobustDepth/main/assets/main.pdf">Paper</a> |
+  <a href="https://raw.githubusercontent.com/fabiotosi92/Diffusion4RobustDepth/main/assets/supplement.pdf">Supplementary</a> |
+  <a href="https://raw.githubusercontent.com/fabiotosi92/Diffusion4RobustDepth/main/assets/poster.pdf">Poster</a> |
+  <a href="https://huggingface.co/datasets/fabiotosi92/Diffusion4RobustDepth">
+    <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face" height="18" style="vertical-align: middle;"> Dataset & Models
+  </a>
 </h2>
 
 **Note**: 🚧 Kindly note that this repository is currently in the development phase. We are actively working to add and refine features and documentation. We apologize for any inconvenience caused by incomplete or missing elements and appreciate your patience as we work towards completion.
@@ -100,8 +105,13 @@ This figure illustrates our process of transforming easy scenes into challenging
 - **Center**: Depth maps estimated from the easy scenes, which serve as a guide for maintaining 3D structure.
 - **Right**: Generated "challenging" images, showcasing various difficult conditions while preserving the underlying depth structure.
 
-<p style="color: red;">
-  <span style="font-size: 1.2em;">🚧</span> <strong>The generated dataset will be made available soon, providing a valuable resource for training and evaluating depth estimation models under challenging conditions.</strong>
+
+
+<p>
+  You can access and download the dataset from: 
+  <a href="https://huggingface.co/datasets/fabiotosi92/Diffusion4RobustDepth" target="_blank">
+    <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face" height="20" style="vertical-align: middle;"> Diffusion4RobustDepth Dataset
+  </a>
 </p>
 
 ## :art: Qualitative Results
@@ -158,9 +168,15 @@ Our approach improves performance across various scenarios and datasets:
 
 ## :computer: Models
 
-**COMING SOON**
-
-We are currently preparing our trained models for release. Please check back soon for updates.
+<p>
+  You can access and download the models from our Hugging Face repository: 
+  <a href="https://huggingface.co/datasets/fabiotosi92/Diffusion4RobustDepth" target="_blank">
+    <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face" height="20" style="vertical-align: middle;"> Diffusion4RobustDepth Models
+  </a>
+</p>
+<p>
+  The repository includes both our generated dataset and the weights of the networks trained using our method.
+</p>
 
 
 ## 🔍 Potential for Enhancing State-of-the-Art Models
